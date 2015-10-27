@@ -25,6 +25,7 @@ Time spent: `8`
 - [X] Customize the navigation bar.
 
 ### Walkthrough
+![Video Walkthrough](RottenTomato.gif)
 
 ## License
 
