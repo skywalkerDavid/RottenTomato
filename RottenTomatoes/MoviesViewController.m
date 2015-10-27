@@ -26,8 +26,8 @@
     [super viewDidLoad];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    configuration.timeoutIntervalForRequest = 5.0;
-    self.networkErrorAlertView.hidden = YES;
+    configuration.timeoutIntervalForRequest = 3.0;
+    [self.networkErrorAlertView setHidden:YES];
     
     self.searchBar.delegate = self;
     
@@ -63,10 +63,6 @@
     [searchBar resignFirstResponder];
     self.searchResults = self.movies;
     [self.tableView reloadData];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.view endEditing:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -144,12 +140,12 @@
                                                     self.searchResults = self.movies;
                                                     [self.tableView reloadData];
                                                     
-                                                    self.networkErrorAlertView.hidden = YES;
-                                                    self.tableView.hidden = NO;
+                                                    [self.networkErrorAlertView setHidden:YES];
+                                                    [self.tableView setHidden:NO];
                                                     NSLog(@"Response: %@", responseDictionary);
                                                 } else {
-                                                    self.networkErrorAlertView.hidden = NO;
-                                                    self.tableView.hidden = YES;
+                                                    [self.networkErrorAlertView setHidden:NO];
+                                                    [self.tableView setHidden:YES];
                                                     NSLog(@"An error occurred: %@", error.description);
                                                 }
                                                 [self.refreshControl endRefreshing];
